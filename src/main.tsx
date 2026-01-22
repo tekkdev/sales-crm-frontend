@@ -1,20 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createBrowserHistory } from 'history';
-import { configureStore } from 'app/store';
-import { Router } from 'react-router';
-import { App } from './app';
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
+import { store } from './store'
+import './index.css'
+import App from './App.tsx'
 
-// prepare store
-const history = createBrowserHistory();
-const store = configureStore();
-
-ReactDOM.render(
-  <Provider store={store}>
-    <Router history={history}>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <Provider store={store}>
       <App />
-    </Router>
-  </Provider>,
-  document.getElementById('root')
-);
+    </Provider>
+  </StrictMode>,
+)
