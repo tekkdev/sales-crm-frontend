@@ -9,13 +9,17 @@ import {
   Target,
   DollarSign,
   Award,
+  AlertCircle,
 } from "lucide-react";
-import { currencySymbol } from "../constants/constants.ts"; // your currency
+import { currencySymbol } from "../constants/constants.ts";
 import {
   kpiData,
-  trends,
   orders,
   transactions,
+  overduePayments,
+  delayedOrders,
+  staleLeads,
+  trends,
   conversionRate,
   wonLeads,
   qualifiedLeads,
@@ -25,29 +29,22 @@ import {
 import { getTrendIcon, getTrendColor } from "../utils/helpers.tsx"; // helper functions
 
 export const Dashboard = () => {
-  const overduePayments = [{ amount: 1200000 }, { amount: 800000 }];
+  const overdueAmount =
+    overduePayments.reduce((sum, t) => sum + t.amount, 0) / 1_000_000;
 
-  const navigateToTransactions = (filters: any) => {
-    console.log("Navigate with filters", filters);
+  const navigateToLeads = () => {
+    console.log("Navigate to Leads");
   };
 
+  const navigateToOrders = () => {
+    console.log("Navigate to Orders");
+  };
+
+  const navigateToTransactions = (filters?: any) => {
+    console.log("Navigate to Transactions", filters);
+  };
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4">
-      // {/* Status Card */}
-      <DashboardCard
-        title="Overdue Payments"
-        value={`${currencySymbol}${(
-          overduePayments.reduce((s, t) => s + t.amount, 0) / 1000000
-        ).toFixed(1)}M`}
-        icon={Clock}
-        variant="neutral"
-        onClick={() => navigateToTransactions({ paymentStatus: "Overdue" })}
-        badge={
-          <Badge className="bg-red-200 text-red-700 dark:bg-red-900/50 dark:text-red-300">
-            {overduePayments.length}
-          </Badge>
-        }
-      />
       {/* Total Leads */}
       <DashboardCard
         title="Total Leads"

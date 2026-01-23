@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import type { LucideIcon } from "lucide-react";
 
 type DashboardCardProps = {
-  title: string;
-  value: string | number;
-  icon: LucideIcon;
+  title?: string;
+  value?: string | number;
+  icon?: LucideIcon;
   variant?: keyof typeof cardVariants;
   badge?: ReactNode;
   footer?: ReactNode;
@@ -13,6 +13,7 @@ type DashboardCardProps = {
   subtitle?: ReactNode;
   trendIcon?: ReactNode;
   onClick?: () => void;
+  children?: ReactNode;
 };
 
 const DashboardCard = ({
@@ -26,9 +27,9 @@ const DashboardCard = ({
   subtitle,
   onClick,
   trendIcon,
+  children,
 }: DashboardCardProps) => {
   const styles = cardVariants[variant];
-
   return (
     <div
       onClick={onClick}
@@ -38,25 +39,37 @@ const DashboardCard = ({
         ${styles.container} ${className || ""}
       `}
     >
-      <div className="flex items-center justify-between mb-2">
-        <div className={`p-2.5 rounded-lg ${styles.iconBg}`}>
-          <Icon className="w-5 h-5 text-white" />
+      {/* Header */}
+      {(title || Icon) && !children && (
+        <div className="flex items-center justify-between mb-2">
+          {Icon && (
+            <div className={`p-2.5 rounded-lg ${styles.iconBg}`}>
+              <Icon className="w-5 h-5 text-white" />
+            </div>
+          )}
+          {badge && <div>{badge}</div>}
+          {trendIcon && <div>{trendIcon}</div>}
         </div>
-        {badge && <div>{badge}</div>}
-        {trendIcon && <div>{trendIcon}</div>}
-      </div>
+      )}
 
-      <p className={`text-xs font-medium mb-1 ${styles.subText}`}>{title}</p>
+      {/* Title + Value (KPI) */}
+      {!children && title && (
+        <p className={`text-xs font-medium mb-1 ${styles.subText}`}>{title}</p>
+      )}
+      {!children && value && (
+        <p className={`text-2xl font-bold ${styles.text}`}>{value}</p>
+      )}
+      {!children && subtitle && <div className="text-xs mt-1">{subtitle}</div>}
 
-      {value && <p className={`text-2xl font-bold ${styles.text}`}>{value}</p>}
-
-      {subtitle && <div className="text-xs mt-1">{subtitle}</div>}
-
-      {footer && (
+      {/* Footer (KPI) */}
+      {!children && footer && (
         <div className="mt-2 pt-2 border-t border-slate-200 dark:border-slate-700">
           {footer}
         </div>
       )}
+
+      {/* Custom content for nested cards */}
+      {children && <div className="mt-2">{children}</div>}
     </div>
   );
 };

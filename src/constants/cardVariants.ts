@@ -1,33 +1,4 @@
 
-// export const cardVariants = {
-//   neutral: {
-//     container:
-//       "bg-slate-50 dark:bg-slate-900/50 border-slate-300 dark:border-slate-700",
-//     iconBg: "bg-slate-600",
-//     text: "text-slate-700 dark:text-slate-300",
-//     subText: "text-slate-600 dark:text-slate-400",
-//   },
-
-//   danger: {
-//     container:
-//       "bg-red-50 dark:bg-red-950/30 border-red-300 dark:border-red-700",
-//     iconBg: "bg-red-600",
-//     text: "text-red-900 dark:text-red-100",
-//     subText: "text-red-700 dark:text-red-400",
-//   },
-
-//   success: {
-//     container:
-//       "bg-green-50 dark:bg-green-950/30 border-green-300 dark:border-green-700",
-//     iconBg: "bg-green-600",
-//     text: "text-green-900 dark:text-green-100",
-//     subText: "text-green-700 dark:text-green-400",
-//   },
-// };
-
-
-// src/constants/cardVariants.ts
-
 export const cardVariants = {
   neutral: {
     container:
@@ -71,4 +42,11 @@ export const cardVariants = {
     text: "text-gray-700 dark:text-gray-300 font-bold",
     subText: "text-gray-600 dark:text-gray-400",
   },
+  orange: {
+  container:
+    "bg-orange-50 dark:bg-orange-950/30 border-orange-300 dark:border-orange-700 shadow-sm backdrop-blur-sm",
+  iconBg: "bg-gradient-to-br from-orange-600 to-orange-700 shadow-sm",
+  text: "text-orange-700 dark:text-orange-400 font-bold",
+  subText: "text-orange-700 dark:text-orange-400",
+},
 };
