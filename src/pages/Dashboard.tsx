@@ -241,6 +241,28 @@ export const Dashboard = () => {
           </>
         }
       />
+
+      <DashboardCard
+        variant="emerald"
+        onClick={() => navigateToTransactions({ paymentStatus: "Overdue" })}
+      >
+        <div className="flex items-center justify-between mb-2">
+          <Clock className="w-5 h-5 text-red-600 dark:text-red-400" />
+
+          <Badge className="bg-red-200 text-red-700 dark:bg-red-900/50 dark:text-red-300">
+            {overduePayments.length}
+          </Badge>
+        </div>
+
+        <p className="text-sm font-medium text-red-900 dark:text-red-100">
+          Overdue Payments
+        </p>
+
+        <p className="text-xs text-red-700 dark:text-red-400 mt-1">
+          {currencySymbol}
+          {overdueAmount.toFixed(1)}M pending
+        </p>
+      </DashboardCard>
     </div>
   );
 };

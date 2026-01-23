@@ -1,5 +1,3 @@
-import { Clock, Package, Users } from "lucide-react";
-
 export const kpiData = {
   totalLeads: 245,
   activeOrders: 78,
@@ -49,31 +47,3 @@ export const staleLeads = [
   { id: 1, name: "Lead A", lastContact: "2026-01-10" },
   { id: 2, name: "Lead B", lastContact: "2026-01-12" },
 ];
-
-// export const statusCards = [
-//   {
-//     key: "overdue",
-//     title: "Overdue Payments",
-//     icon: Clock,
-//     variant: "teal",
-//     badgeCount: "overduePayments",
-//     type: "amount",
-//   },
-//   {
-//     key: "delayed",
-//     title: "Delayed Orders",
-//     icon: Package,
-//     variant: "amber",
-//     badgeCount: "delayedOrders",
-//     type: "text",
-//     description: "Past due date",
-//   },
-//   {
-//     key: "stale",
-//     title: "Stale Leads",
-//     icon: Users,
-//     variant: "gray",
-//     type: "text",
-//     description: "No follow-up in 7+ days",
-//   },
-// ];
